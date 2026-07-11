@@ -1,22 +1,25 @@
 <template>
   <div class="login-wrapper">
     <div class="login-card">
-      <h1>Login</h1>
+      <h1>Register</h1>
 
-      <form @submit.prevent="handleLogin">
+      <form @submit.prevent="handleRegister">
         <label>Email</label>
         <input type="email" v-model="email" required />
   
         <label>Password</label>
         <input type="password" v-model="password" required />
-  
-        <button type="submit", router-link="/movieinput">Log In</button>
+
+        <label>Confirm Password</label>
+        <input type="password" v-model="confirmPassword" required />
+
+        <button type="submit">Register</button>
       </form>
   
       <!-- ✅ Sign Up Prompt -->
       <p class="signup-link">
         New user?
-        <router-link to="/register">Sign up</router-link>
+        <router-link to="/login">Sign up</router-link>
       </p>
     </div>
   </div>
@@ -26,31 +29,33 @@
   
 <script>
 export default {
-  name: 'Login',
+  name: 'Register',
   data() {
     return {
       email: '',
-      password: ''
+      password: '',
+      confirmPassword: ''
     }
   },
   methods: {
-    async handleLogin() {
+    async handleRegister() {
       try {
-        const response = await fetch('http://localhost:3000/api/auth/login', {
+        const response = await fetch('http://localhost:3000/api/auth/register', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
             email: this.email,
-            password: this.password
+            password: this.password,
+            confirmPassword: this.confirmPassword
           })
         })
 
         const data = await response.json()
 
         if (!response.ok) {
-          throw new Error(data.message || 'Login failed')
+          throw new Error(data.message || 'Registration failed')
         }
 
         // Store login flag and redirect
@@ -59,15 +64,11 @@ export default {
         this.$router.push('/')
       } catch (err) {
         alert(err.message)
-        console.error('Login error:', err)
+        console.error('Registration error:', err)
       }
     }
   }
 }
 </script>
 
-
-<style scoped>
-
-
-</style>
+  
