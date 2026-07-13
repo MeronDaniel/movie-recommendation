@@ -1,5 +1,3 @@
-import os
-
 from flask import Flask, Blueprint, current_app, jsonify, request
 from werkzeug.security import generate_password_hash
 #from supabase import create_client
@@ -17,24 +15,38 @@ auth_bp = Blueprint("auth", __name__, url_prefix="/api/auth")
     #hash_password = db.Column(db.String(255), nullable=True) #password shouldn't be stored in database, but as a hash using byrpt or werkzeug.security
 
 
-@auth_bp.route('/register', methods=['POST'])
+@auth_bp.route('/register', methods=['GET', 'POST'])
 def register():
-    data = request.get_json()
-    email = data.get('email')
-    password = data.get('password')
-    confirm_password = data.get('confirm_password')
+    if request.method == 'GET':
+ 
+        # Check if user exists
+        supabase = current_app.supabase
+ 
+        #response = supabase.table("users").select("*").eq("email", email).execute()
+        response = supabase.table("users").select("*").execute()
 
-    if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
-        return jsonify({"error": "Invalid email format"}), 400
+        return jsonify(response.data), 200
+    
+    if request.method == 'POST':
+        data = request.get_json()
+        email = data.get('email')
+        password = data.get('password')
+        confirm_password = data.get('confirm_password')
 
-    if password != confirm_password:
-        return jsonify({"error": "Passwords do not match"}), 400
+        if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
+            return jsonify({"error": "Invalid email format"}), 400
+
+        if password != confirm_password:
+            return jsonify({"error": "Passwords do not match"}), 400
+        
+
 
     # Check if user exists
     supabase = current_app.supabase
 
-    existing = supabase.table("users").select("*").eq("email", email).execute()
-    if existing.data:
+    #response = supabase.table("users").select("*").eq("email", email).execute()
+    response = supabase.table("users").select("*").execute()
+    if response.data:
         return jsonify({"error": "Email already registered"}), 400
     
 
