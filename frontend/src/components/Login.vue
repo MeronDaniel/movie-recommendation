@@ -10,7 +10,7 @@
         <label>Password</label>
         <input type="password" v-model="password" required />
   
-        <button type="submit", router-link="/movieinput">Log In</button>
+        <button type="submit">Log In</button>
       </form>
   
       <!-- ✅ Sign Up Prompt -->
