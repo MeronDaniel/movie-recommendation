@@ -4,10 +4,10 @@
       <h1>Login</h1>
 
       <form @submit.prevent="handleLogin">
-        <label>Email</label>
+        <label>Email: </label>
         <input type="email" v-model="email" required />
   
-        <label>Password</label>
+        <label>Password: </label>
         <input type="password" v-model="password" required />
   
         <button type="submit", router-link="/movieinput">Log In</button>
@@ -36,7 +36,7 @@ export default {
   methods: {
     async handleLogin() {
       try {
-        const response = await fetch('http://localhost:3000/api/auth/login', {
+        const response = await fetch('http://192.168.2.19:5000/api/auth/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -56,7 +56,7 @@ export default {
         // Store login flag and redirect
         localStorage.setItem('token', data.token)
         localStorage.setItem('isLoggedIn', 'true')
-        this.$router.push('/')
+        this.$router.push('/movieinput') // once user pushes login they get sent to movieinput page
       } catch (err) {
         alert(err.message)
         console.error('Login error:', err)
