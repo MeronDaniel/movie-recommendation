@@ -4,10 +4,10 @@
       <h1>Login</h1>
 
       <form @submit.prevent="handleLogin">
-        <label>Email: </label>
+        <label>Email</label>
         <input type="email" v-model="email" required />
   
-        <label>Password: </label>
+        <label>Password</label>
         <input type="password" v-model="password" required />
   
         <button type="submit", router-link="/movieinput">Log In</button>
