@@ -26,7 +26,7 @@ export default {
   methods: {
     async handleSearch() {
       try {
-        const response = await fetch('http://192.168.2.19:5000/api/auth/movieinput', {
+        const response = await fetch('http://192.168.2.19:5000/api/movieinput/search', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

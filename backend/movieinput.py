@@ -1,12 +1,10 @@
-from flask import Flask, Blueprint, current_app, jsonify, request, requests
-from werkzeug.security import generate_password_hash, check_password_hash
-#from supabase import create_client
+from flask import Blueprint, jsonify, request
+import requests
 import os
 
+movieinput_bp = Blueprint("movieinput", __name__, url_prefix="/api/movieinput")
 
-auth_bp = Blueprint("auth", __name__, url_prefix="/api/auth")
-
-@auth_bp.route('/movieinput', methods=['POST'])
+@movieinput_bp.route('/search', methods=['POST'])
 def search():
 
     if request.method == 'POST':
@@ -18,8 +16,6 @@ def search():
             return jsonify({"error": "Movie is required"}), 400        
 
         OMDB_KEY = os.getenv("OMDB_KEY")
-
-
           
         response = requests.get(f"http://www.omdbapi.com/?t={movie}&apikey={OMDB_KEY}")
 

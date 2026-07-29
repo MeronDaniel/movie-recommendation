@@ -4,6 +4,7 @@ from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
 from supabase import create_client
 from auth import auth_bp
+from movieinput import movieinput_bp
 from dotenv import load_dotenv
 import os
 
@@ -39,6 +40,7 @@ def create_app():
         return jsonify({"status": "Backend running"})
 
     app.register_blueprint(auth_bp)
+    app.register_blueprint(movieinput_bp)
     app.supabase = supabase
     return app
 
