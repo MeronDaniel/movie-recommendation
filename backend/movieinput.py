@@ -22,7 +22,12 @@ def search():
         if response.status_code != 200:
             return jsonify({"error": "Failed to fetch movie data"}), 400
 
-        movie_data = response.json()
         
-        return jsonify({"movie": movie_data}), 201
+
+        movie_data = response.json()
+
+        if movie_data.get("Response") == "False":
+            return jsonify({"error": "Movie not found"}), 404
+        
+        return jsonify({"movie": movie_data}), 200
 

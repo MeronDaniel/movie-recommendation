@@ -42,8 +42,10 @@ export default {
           throw new Error(data.message || 'Search failed')
         }
 
-        // Store search results and redirect
-        localStorage.setItem('searchResults', JSON.stringify(data))
+        // Store movie search results and redirect
+        localStorage.setItem('searchResults', JSON.stringify({movie: data.movie}))
+        console.log("Movie Data:", data.movie)
+        console.log("Poster URL:", data.movie.Poster)
         localStorage.setItem('isLoggedIn', 'true')
         this.$router.push('/display') //once search input is successful, redirect to display page to display movie recommended
       } catch (err) {

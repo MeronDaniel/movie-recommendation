@@ -5,6 +5,7 @@ from flask_cors import CORS
 from supabase import create_client
 from auth import auth_bp
 from movieinput import movieinput_bp
+from display import display_bp
 from dotenv import load_dotenv
 import os
 
@@ -41,6 +42,7 @@ def create_app():
 
     app.register_blueprint(auth_bp)
     app.register_blueprint(movieinput_bp)
+    #app.register_blueprint(display_bp)
     app.supabase = supabase
     return app
 
