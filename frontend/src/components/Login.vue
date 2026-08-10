@@ -4,10 +4,10 @@
       <h1>Login</h1>
 
       <form @submit.prevent="handleLogin">
-        <label>Email</label>
+        <label>Email: </label>
         <input type="email" v-model="email" required />
   
-        <label>Password</label>
+        <label>Password: </label>
         <input type="password" v-model="password" required />
   
         <button type="submit">Log In</button>
@@ -68,6 +68,25 @@ export default {
 
 
 <style scoped>
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #920909;
+}
 
+.login-card {
+  background-color: #fff;
+  padding: 2rem;
+  align-items: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(112, 101, 101, 0.1);
+  width: 250px;
+}
+
+input[type="email"], input[type="password"] {
+  margin-bottom: 1rem;
+}
 
 </style>
