@@ -98,41 +98,4 @@ export default {
   width: 250px;
 }
 
-.movie-background { 
-  background: url('../images/movie_collection.jpg');
-  background-size: cover;
-  background-position: center;
-  min-height: 100vh;
-}
-
-.top-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  flex-direction: row;
-  display: flex;
-  background-color: #333;
-  color: white;
-  padding: 1rem 2rem;
-}
-
-.nav-links a {
-  position: left;
-  color: white;
-  margin-left: 1.5rem;
-  text-decoration: none;
-}
-
-.nav-cart a {
-  margin-left: 70rem;
-  color: white;
-  text-decoration: none;
-  width: 100%;
-}
-
-.nav-links a:hover {
-  text-decoration: underline;
-}
-
 </style>

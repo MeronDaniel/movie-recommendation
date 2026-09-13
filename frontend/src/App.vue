@@ -1,5 +1,20 @@
 <template>
   <div class="movie-background">
+    <header class="top-bar">
+
+      <nav class="nav-links">
+        <router-link to="/theatre">Theatre</router-link>
+        <router-link to="/posters">Posters</router-link>
+        <router-link to="/recommendations">Recommendations</router-link>
+      </nav>
+      <nav class="nav-cart">
+        <router-link to="/cart">
+          <span class="cart-icon">🛒</span>
+        </router-link>
+        
+      </nav>
+
+    </header>
     <router-view />
   </div>
 </template>
@@ -72,5 +87,35 @@ export default {
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
+}
+
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  flex-direction: row;
+  display: flex;
+  background-color: #333;
+  color: white;
+  padding: 1rem 2rem;
+}
+
+.nav-links a {
+  position: left;
+  color: white;
+  margin-left: 1.5rem;
+  text-decoration: none;
+}
+
+.nav-cart a {
+  margin-left: 70rem;
+  color: white;
+  text-decoration: none;
+  width: 100%;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
 }
 </style>
