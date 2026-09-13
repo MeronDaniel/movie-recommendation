@@ -85,6 +85,7 @@ export default {
   width: 250px;
 }
 
+
 input[type="email"], input[type="password"] {
   margin-bottom: 1rem;
 }

@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <router-view></router-view>
+  <div class="movie-background">
+    <router-view />
   </div>
 </template>
 
@@ -57,6 +57,13 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.movie-background { 
+  background: url('../src/images/movie_collection.jpg') no-repeat center center fixed;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
 }
 
 .login-container {

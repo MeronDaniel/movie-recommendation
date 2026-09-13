@@ -58,6 +58,7 @@ export default {
   align-items: center;
   height: 100vh;
 }
+
   
 .image-card {
   background-color: #4389ec;
